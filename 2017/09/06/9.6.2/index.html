@@ -101,7 +101,7 @@
           <!-- Date -->
           <span class="date-time info">On
             <span class="date">2017-09-06</span>
-            <span class="time">21:27:55</span>
+            <span class="time">08:43:14</span>
           </span>
           
           <!--  Categories  -->
@@ -162,9 +162,8 @@
 <li><p>从字面意思上你已经知道了它们的意思。</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">&lt;form name=&quot;yourForm&quot;&gt;</div><div class="line">    &lt;input type=&quot;text&quot; name=&quot;inputText&quot; required ng-trim=&quot;true&quot; ng-model=&quot;userNum&quot; ng-pattern=&quot;/^[0-9]*[1-9][0-9]*$/&quot; ng-maxlength=&quot;6&quot; maxlength=&quot;6&quot;/&gt;</div><div class="line">&lt;/form&gt;</div></pre></td></tr></table></figure>
 </li>
-<li><p>你可以通过 scope.yourForm.inputText.scope.yourForm.inputText.error.required 来判断输入框是否为空</p>
+<li><p>你可以通过 scope.yourForm.inputText.scope.yourForm.inputText.invalid 来判断输入的内容是否满足ng-pattern，ng-maxlength，maxlength</p>
 </li>
-<li>你可以通过 scope.yourForm.inputText.scope.yourForm.inputText.invalid 来判断输入的内容是否满足ng-pattern，ng-maxlength，maxlength</li>
 <li>你通过$scope.userNum获得的输入内容是去掉前后空白的，因为ng-trim的存在。<h4 id="第六-下拉框之ng-options标签"><a href="#第六-下拉框之ng-options标签" class="headerlink" title="第六 下拉框之ng-options标签"></a>第六 下拉框之ng-options标签</h4></li>
 <li><p>ng-options是为下拉框专门打造的标签。</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&lt;select ng-model=&quot;yourSelected&quot; ng-options=&quot;person.id as person.name in persons&quot;&gt;&lt;/select&gt;</div></pre></td></tr></table></figure>
