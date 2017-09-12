@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html>
+  <!-- Html Head Tag-->
+  <head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="技术">
+  <meta name="author" content="Allan">
+  <!-- Open Graph Data -->
+  <meta property="og:title" content="promise"/>
+  <meta property="og:description" content="技术" />
+  <meta property="og:site_name" content="Allan"/>
+  <meta property="og:type" content="article" />
+  <meta property="og:image" content="https://chinatl.github.io"/>
+  
+    <link rel="alternate" href="/atom.xml" title="Allan" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.ico">
+  
+
+  <!-- Site Title -->
+  <title>Allan</title>
+
+  <!-- Bootstrap CSS -->
+  <link rel="stylesheet" href="/css/bootstrap.min.css">
+  <!-- Custom CSS -->
+  
+  <link rel="stylesheet" href="/css/style.dark.css">
+
+  <!-- Google Analytics -->
+  
+
+</head>
+
+  <body>
+    <!-- Page Header -->
+
+
+<header class="site-header header-background" style="background-image: url(/img/default-banner-dark.jpg)">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+        <div class="page-title with-background-image">
+          <p class="title">promise</p>
+          <p class="subtitle"></p>
+        </div>
+        <div class="site-menu with-background-image">
+          <ul>
+            
+              <li>
+                <a href="/">
+                  
+                  Home
+                  
+                </a>
+              </li>
+            
+              <li>
+                <a href="/archives">
+                  
+                  Archives
+                  
+                </a>
+              </li>
+            
+              <li>
+                <a href="https://github.chinatl.com">
+                  
+                  Github
+                  
+                </a>
+              </li>
+            
+              <li>
+                <a href="mailto:codekidlan@gmail.com">
+                  
+                  Email
+                  
+                </a>
+              </li>
+            
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</header>
+
+
+<article>
+  <div class="container typo">
+    <div class="row">
+      <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+        <div class="post-info text-muted">
+          
+            <!-- Author -->
+            <span class="author info">By Allan</span>
+          
+          <!-- Date -->
+          <span class="date-time info">On
+            <span class="date">2017-09-08</span>
+            <span class="time">09:50:55</span>
+          </span>
+          
+          <!--  Categories  -->
+            <span class="categories info">Under 
+
+<a href="/categories/技术/">技术</a>
+</span>
+          
+        </div>
+        <!-- Tags -->
+        
+          <div class="post-tags text-muted">
+            Tags: 
+
+<a class="tag" href="/tags/javascript/">#javascript</a> <a class="tag" href="/tags/promise/">#promise</a> <a class="tag" href="/tags/es6/">#es6</a>
+
+
+          </div>
+        
+        <!-- Post Main Content -->
+        <div class="post-content">
+          <h4 id="在JavaScript的世界中，所有代码都是单线程执行的。"><a href="#在JavaScript的世界中，所有代码都是单线程执行的。" class="headerlink" title="在JavaScript的世界中，所有代码都是单线程执行的。"></a>在JavaScript的世界中，所有代码都是单线程执行的。</h4><a id="more"></a>
+<ul>
+<li><p>由于这个“缺陷”，导致JavaScript的所有网络操作，浏览器事件，都必须是异步执行。异步执行可以用回调函数实现：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">function fn() &#123;</div><div class="line">    console.log(&apos;Done&apos;);</div><div class="line">&#125;</div><div class="line">console.log(&apos;before setTimeout()&apos;);</div><div class="line">setTimeout(fn, 1000); // 1秒钟后调用fn函数</div><div class="line">console.log(&apos;after setTimeout()&apos;);</div><div class="line">`</div></pre></td></tr></table></figure>
+</li>
+<li><p>在Chrome的控制台输出可以看到：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">before setTimeout()</div><div class="line">after setTimeout()</div><div class="line">//(等待1秒后)</div><div class="line">Done</div></pre></td></tr></table></figure>
+</li>
+<li><p>可见，异步操作会在将来的某个时间点触发一个函数调用</p>
+</li>
+<li><p>AJAX就是典型的异步操作。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">request.onreadystatechange = function () &#123;</div><div class="line">    if (request.readyState === 4) &#123;</div><div class="line">        if (request.status === 200) &#123;</div><div class="line">            return success(request.responseText);</div><div class="line">        &#125; else &#123;</div><div class="line">            return fail(request.status);</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+</li>
+<li><p>把回调函数success(request.responseText)和fail(request.status)写到一个AJAX操作里很正常，但是不好看，而且不利于代码复用。</p>
+</li>
+<li><p>有没有更好的写法</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">var ajax = ajaxGet(&apos;http://...&apos;);</div><div class="line">ajax.ifSuccess(success)</div><div class="line">    .ifFail(fail);</div></pre></td></tr></table></figure>
+</li>
+<li><p>这种链式写法的好处在于，先统一执行AJAX逻辑，不关心如何处理结果，然后，根据结果是成功还是失败，在将来的某个时候调用success函数或fail函数。</p>
+</li>
+<li>Promise有各种开源实现，在ES6中被统一规范，由浏览器直接支持，使用之前先测试浏览器是否支持。</li>
+<li><p>先看一个最简单的Promise例子：生成一个0-2之间的随机数，如果小于1，则等待一段时间后返回成功，否则返回失败：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line">function test(resolve, reject) &#123;</div><div class="line">    var timeOut = Math.random() * 2;</div><div class="line">    log(&apos;set timeout to: &apos; + timeOut + &apos; seconds.&apos;);</div><div class="line">    setTimeout(function () &#123;</div><div class="line">        if (timeOut &lt; 1) &#123;</div><div class="line">            log(&apos;call resolve()...&apos;);</div><div class="line">            resolve(&apos;200 OK&apos;);</div><div class="line">        &#125;</div><div class="line">        else &#123;</div><div class="line">            log(&apos;call reject()...&apos;);</div><div class="line">            reject(&apos;timeout in &apos; + timeOut + &apos; seconds.&apos;);</div><div class="line">        &#125;</div><div class="line">    &#125;, timeOut * 1000);</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+</li>
+<li><p>这个test()函数有两个参数，这两个参数都是函数，如果执行成功，将调用resolve(‘200 OK’)，如果执行失败，将调用reject(‘timeout in ‘ + timeOut + ‘ seconds.’)。可以看出，test()函数只关心自身的逻辑，并不关心具体的resolve和reject将如何处理结果.</p>
+</li>
+<li><p>有了执行函数，我们就可以用一个Promise对象来执行它，并在将来某个时刻获得成功或失败的结果：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">var p1 = new Promise(test);</div><div class="line">var p2 = p1.then(function (result) &#123;</div><div class="line">    console.log(&apos;成功：&apos; + result);</div><div class="line">&#125;);</div><div class="line">var p3 = p2.catch(function (reason) &#123;</div><div class="line">    console.log(&apos;失败：&apos; + reason);</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
+</li>
+<li><p>Promise对象可以串联起来，所以上述代码可以简化为：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">new Promise(test).then(function (result) &#123;</div><div class="line">    console.log(&apos;成功：&apos; + result);</div><div class="line">&#125;).catch(function (reason) &#123;</div><div class="line">    console.log(&apos;失败：&apos; + reason);</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
+</li>
+<li><p>可见Promise最大的好处是在异步执行的流程中，把执行代码和处理结果的代码清晰地分离了：</p>
+</li>
+<li>Promise还可以做更多的事情，比如，有若干个异步任务，需要先做任务1，如果成功后再做任务2，任何任务失败则不再继续并执行错误处理函数。要串行执行这样的异步任务，不用Promise需要写一层一层的嵌套代码。有了Promise，我们只需要简单地写：<br><img src="./../promise.png" alt=""><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">job1.then(job2).then(job3).catch(handleError);</div></pre></td></tr></table></figure></li>
+</ul>
+
+        </div>
+      </div>
+    </div>
+  </div>
+</article>
+
+
+
+    <!-- Footer -->
+<footer>
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+        <p class="copyright text-muted">
+          Theme By <a target="_blank" href="https://github.com/levblanc">Levblanc.</a>
+          Inspired By <a target="_blank" href="https://github.com/klugjo/hexo-theme-clean-blog">Clean Blog.</a>
+        <p class="copyright text-muted">
+          Powered By <a target="_blank" href="https://hexo.io/">Hexo.</a>
+        </p>
+      </div>
+    </div>
+  </div>
+</footer>
+
+
+    <!-- After Footer Scripts -->
+<script src="/js/highlight.pack.js"></script>
+<script>
+  document.addEventListener("DOMContentLoaded", function(event) {
+    var codeBlocks = Array.prototype.slice.call(document.getElementsByTagName('pre'))
+    codeBlocks.forEach(function(block, index) {
+      hljs.highlightBlock(block);
+    });
+  });
+</script>
+
+  </body>
+</html>
+

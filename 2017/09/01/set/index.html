@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html>
+  <!-- Html Head Tag-->
+  <head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="技术">
+  <meta name="author" content="Allan">
+  <!-- Open Graph Data -->
+  <meta property="og:title" content="ES6 set和map"/>
+  <meta property="og:description" content="技术" />
+  <meta property="og:site_name" content="Allan"/>
+  <meta property="og:type" content="article" />
+  <meta property="og:image" content="https://chinatl.github.io"/>
+  
+    <link rel="alternate" href="/atom.xml" title="Allan" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.ico">
+  
+
+  <!-- Site Title -->
+  <title>Allan</title>
+
+  <!-- Bootstrap CSS -->
+  <link rel="stylesheet" href="/css/bootstrap.min.css">
+  <!-- Custom CSS -->
+  
+  <link rel="stylesheet" href="/css/style.dark.css">
+
+  <!-- Google Analytics -->
+  
+
+</head>
+
+  <body>
+    <!-- Page Header -->
+
+
+<header class="site-header header-background" style="background-image: url(/img/default-banner-dark.jpg)">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+        <div class="page-title with-background-image">
+          <p class="title">ES6 set和map</p>
+          <p class="subtitle"></p>
+        </div>
+        <div class="site-menu with-background-image">
+          <ul>
+            
+              <li>
+                <a href="/">
+                  
+                  Home
+                  
+                </a>
+              </li>
+            
+              <li>
+                <a href="/archives">
+                  
+                  Archives
+                  
+                </a>
+              </li>
+            
+              <li>
+                <a href="https://github.chinatl.com">
+                  
+                  Github
+                  
+                </a>
+              </li>
+            
+              <li>
+                <a href="mailto:codekidlan@gmail.com">
+                  
+                  Email
+                  
+                </a>
+              </li>
+            
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</header>
+
+
+<article>
+  <div class="container typo">
+    <div class="row">
+      <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+        <div class="post-info text-muted">
+          
+            <!-- Author -->
+            <span class="author info">By Allan</span>
+          
+          <!-- Date -->
+          <span class="date-time info">On
+            <span class="date">2017-09-01</span>
+            <span class="time">09:50:56</span>
+          </span>
+          
+          <!--  Categories  -->
+            <span class="categories info">Under 
+
+<a href="/categories/技术/">技术</a>
+</span>
+          
+        </div>
+        <!-- Tags -->
+        
+          <div class="post-tags text-muted">
+            Tags: 
+
+<a class="tag" href="/tags/javascript/">#javascript</a> <a class="tag" href="/tags/es6/">#es6</a>
+
+
+          </div>
+        
+        <!-- Post Main Content -->
+        <div class="post-content">
+          <h4 id="set和map的用法"><a href="#set和map的用法" class="headerlink" title="set和map的用法"></a>set和map的用法</h4><a id="more"></a>
+<h4 id="Map-和-Set"><a href="#Map-和-Set" class="headerlink" title="Map 和 Set"></a>Map 和 Set</h4><ul>
+<li><p>遍历Array可以采用下标循环，遍历Map和Set就无法使用下标。为了统一集合类型，ES6标准引入了新的iterable类型，Array、Map和Set都属于iterable类型。</p>
+</li>
+<li><p>具有iterable类型的集合可以通过新的for … of循环来遍历。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">var arr = [1,2,3];</div><div class="line">arr.name = &apos;hello world&apos;;</div><div class="line">for(var k of arr)&#123;</div><div class="line">	console.log(k)// 1,2,3,&apos;hello world&apos;</div><div class="line">&#125;</div><div class="line">/**/</div><div class="line">var arr = [1,2,3];</div><div class="line">arr.name = &apos;hello world&apos;;</div><div class="line">for(var k of arr)&#123;</div><div class="line">	console.log(k)// 1,2,3</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+</li>
+</ul>
+<h4 id="Map是一组键值对的结构，具有极快的查找速度"><a href="#Map是一组键值对的结构，具有极快的查找速度" class="headerlink" title="Map是一组键值对的结构，具有极快的查找速度"></a>Map是一组键值对的结构，具有极快的查找速度</h4><ul>
+<li><p>举个例子，假设要根据同学的名字查找对应的成绩，用map实现，只需要一个“名字”-“成绩”的对照表，直接根据名字查找成绩，无论这个表有多大，查找速度都不会变慢，用JavaScript写一个Map如下：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">var m = new Map([[&apos;Michael&apos;, 95], [&apos;Bob&apos;, 75], [&apos;Tracy&apos;, 85]]);</div><div class="line">m.get(&apos;Michael&apos;); // 95</div></pre></td></tr></table></figure>
+</li>
+<li><p>初始化Map需要一个二维数组，或者直接初始化一个空Map。Map具有以下方法：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">var m = new Map(); // 空Map</div><div class="line">m.set(&apos;Adam&apos;, 67); // 添加新的key-value</div><div class="line">m.set(&apos;Bob&apos;, 59);</div><div class="line">m.has(&apos;Adam&apos;); // 是否存在key &apos;Adam&apos;: true</div><div class="line">m.get(&apos;Adam&apos;); // 67</div><div class="line">m.delete(&apos;Adam&apos;); // 删除key &apos;Adam&apos;</div><div class="line">m.get(&apos;Adam&apos;); // undefined</div></pre></td></tr></table></figure>
+</li>
+<li><p>由于一个key只能对应一个value，所以，多次对一个key放入value，后面的值会把前面的值冲掉：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">var m = new Map();</div><div class="line">m.set(&apos;Adam&apos;, 67);</div><div class="line">m.set(&apos;Adam&apos;, 88);</div><div class="line">m.get(&apos;Adam&apos;); // 88</div></pre></td></tr></table></figure>
+</li>
+</ul>
+<h4 id="map"><a href="#map" class="headerlink" title="map"></a>map</h4><ul>
+<li>Set和Map类似，也是一组key的集合，但不存储value。由于key不能重复，所以，在Set中，没有重复的key。</li>
+<li><p>要创建一个Set，需要提供一个Array作为输入，或者直接创建一个空Set：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">var s1 = new Set(); // 空Set</div><div class="line">var s2 = new Set([1, 2, 3]); // 含1, 2, 3</div></pre></td></tr></table></figure>
+</li>
+<li><p>重复元素在Set中自动被过滤：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">var s = new Set([1, 2, 3, 3, &apos;3&apos;]);</div><div class="line">s; // Set &#123;1, 2, 3, &quot;3&quot;&#125;</div></pre></td></tr></table></figure>
+</li>
+<li><p>通过add(key)方法可以添加元素到Set中，可以重复添加，但不会有效果</p>
+</li>
+<li>通过delete(key)方法可以删除元素：<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">var s = new Set([1, 2, 3]);</div><div class="line">s.add(4)</div><div class="line">s; // Set &#123;1, 2, 3, 4&#125;</div><div class="line">s.delete(3);</div><div class="line">s; // Set &#123;1, 2, 4&#125;</div></pre></td></tr></table></figure>
+</li>
+</ul>
+<h4 id="小结"><a href="#小结" class="headerlink" title="小结"></a>小结</h4><ul>
+<li><p>看到这，肯定会有强迫症再问我object也是键值对，为什么不用object或者object和map的区别等等，这里给解释一下</p>
+<ul>
+<li><p>object通过属性（也就是名字）来访问对应的成绩，而new Map（）构建了一个属于Map类的一个实例对象，这个对象内部有一个map（也就是一系列的键值对），通过对象的get方法访问这个map，从而获取成绩。所以说，两者在实现上完全不同，一个通过属性访问，一个通过方法访问map从而达到目的。</p>
+</li>
+<li><p>明确职责，object使用hashmap实现，可以把object当map这种数据结构使用，但是object的职责不是map。所以es6专门定义了map，方便使用，职责明确</p>
+</li>
+<li><p>Map的精髓：极快的查找速度</p>
+</li>
+</ul>
+</li>
+</ul>
+
+        </div>
+      </div>
+    </div>
+  </div>
+</article>
+
+
+
+    <!-- Footer -->
+<footer>
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+        <p class="copyright text-muted">
+          Theme By <a target="_blank" href="https://github.com/levblanc">Levblanc.</a>
+          Inspired By <a target="_blank" href="https://github.com/klugjo/hexo-theme-clean-blog">Clean Blog.</a>
+        <p class="copyright text-muted">
+          Powered By <a target="_blank" href="https://hexo.io/">Hexo.</a>
+        </p>
+      </div>
+    </div>
+  </div>
+</footer>
+
+
+    <!-- After Footer Scripts -->
+<script src="/js/highlight.pack.js"></script>
+<script>
+  document.addEventListener("DOMContentLoaded", function(event) {
+    var codeBlocks = Array.prototype.slice.call(document.getElementsByTagName('pre'))
+    codeBlocks.forEach(function(block, index) {
+      hljs.highlightBlock(block);
+    });
+  });
+</script>
+
+  </body>
+</html>
+

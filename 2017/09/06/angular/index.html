@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html>
+  <!-- Html Head Tag-->
+  <head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="技术">
+  <meta name="author" content="Allan">
+  <!-- Open Graph Data -->
+  <meta property="og:title" content="angular工作中最常用的几种功能"/>
+  <meta property="og:description" content="技术" />
+  <meta property="og:site_name" content="Allan"/>
+  <meta property="og:type" content="article" />
+  <meta property="og:image" content="https://chinatl.github.io"/>
+  
+    <link rel="alternate" href="/atom.xml" title="Allan" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.ico">
+  
+
+  <!-- Site Title -->
+  <title>Allan</title>
+
+  <!-- Bootstrap CSS -->
+  <link rel="stylesheet" href="/css/bootstrap.min.css">
+  <!-- Custom CSS -->
+  
+  <link rel="stylesheet" href="/css/style.dark.css">
+
+  <!-- Google Analytics -->
+  
+
+</head>
+
+  <body>
+    <!-- Page Header -->
+
+
+<header class="site-header header-background" style="background-image: url(/img/default-banner-dark.jpg)">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+        <div class="page-title with-background-image">
+          <p class="title">angular工作中最常用的几种功能</p>
+          <p class="subtitle"></p>
+        </div>
+        <div class="site-menu with-background-image">
+          <ul>
+            
+              <li>
+                <a href="/">
+                  
+                  Home
+                  
+                </a>
+              </li>
+            
+              <li>
+                <a href="/archives">
+                  
+                  Archives
+                  
+                </a>
+              </li>
+            
+              <li>
+                <a href="https://github.chinatl.com">
+                  
+                  Github
+                  
+                </a>
+              </li>
+            
+              <li>
+                <a href="mailto:codekidlan@gmail.com">
+                  
+                  Email
+                  
+                </a>
+              </li>
+            
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</header>
+
+
+<article>
+  <div class="container typo">
+    <div class="row">
+      <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+        <div class="post-info text-muted">
+          
+            <!-- Author -->
+            <span class="author info">By Allan</span>
+          
+          <!-- Date -->
+          <span class="date-time info">On
+            <span class="date">2017-09-06</span>
+            <span class="time">09:50:56</span>
+          </span>
+          
+          <!--  Categories  -->
+            <span class="categories info">Under 
+
+<a href="/categories/技术/">技术</a>
+</span>
+          
+        </div>
+        <!-- Tags -->
+        
+          <div class="post-tags text-muted">
+            Tags: 
+
+<a class="tag" href="/tags/angular/">#angular</a> <a class="tag" href="/tags/javascript/">#javascript</a>
+
+
+          </div>
+        
+        <!-- Post Main Content -->
+        <div class="post-content">
+          <h4 id="摘要：-AngularJS-最常用的功能"><a href="#摘要：-AngularJS-最常用的功能" class="headerlink" title="摘要： AngularJS 最常用的功能"></a>摘要： AngularJS 最常用的功能</h4><a id="more"></a>
+<h4 id="第一-迭代输出之ng-repeat标签"><a href="#第一-迭代输出之ng-repeat标签" class="headerlink" title="第一 迭代输出之ng-repeat标签"></a>第一 迭代输出之ng-repeat标签</h4><ul>
+<li><p>ng-repeat让table ul ol等标签和js里的数组完美结合</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">&lt;ul&gt;</div><div class="line">    &lt;li ng-repeat=&quot;person in persons&quot;&gt;</div><div class="line">    &#123; &#123; person.name &#125; &#125; is &#123; &#123;person.age&#125; &#125; years old.</div><div class="line">    &lt;/li&gt;</div><div class="line">&lt;/ul&gt;</div></pre></td></tr></table></figure>
+</li>
+<li><p>你甚至可以指定输出的顺序：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&lt;li ng-repeat=&quot;person in persons | orderBy:&apos;name&apos;&quot;&gt;</div></pre></td></tr></table></figure>
+</li>
+</ul>
+<h4 id="第二-动态绑定之ng-model标签"><a href="#第二-动态绑定之ng-model标签" class="headerlink" title="第二 动态绑定之ng-model标签"></a>第二 动态绑定之ng-model标签</h4><ul>
+<li><p>任何有用户输入，只要是有值的html标签，都可以动态绑定js中的变量，<br>而且是动态绑定。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&lt;input type=&quot;text&quot; ng-model=&apos;password&apos;&gt;</div></pre></td></tr></table></figure>
+</li>
+<li><p>对于绑定的变量，你可以使用{ { } } 直接引用</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&lt;span&gt;you input password is &#123;&#123;password&#125;&#125;&lt;/span&gt;</div></pre></td></tr></table></figure>
+</li>
+<li><p>如果你熟悉fiter，你可以很容易的按你的需要格式输出</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&lt;span&gt;&#123; &#123; 1288323623006 | date:&apos;yyyy-MM-dd HH:mm:ss Z&apos; &#125; &#125; &lt;/span&gt;</div></pre></td></tr></table></figure>
+</li>
+</ul>
+<h4 id="第三-绑定点击事件之ng-click事件"><a href="#第三-绑定点击事件之ng-click事件" class="headerlink" title="第三 绑定点击事件之ng-click事件"></a>第三 绑定点击事件之ng-click事件</h4><ul>
+<li><p>使用ng-click你可以很容易的为一个标签绑定点击事件。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&lt;button ng-click=&quot;pressMe()&quot;/&gt;</div></pre></td></tr></table></figure>
+</li>
+<li><p>当然前提是你要在$scope域中定义的自己的pressMe方法。</p>
+</li>
+<li><p>和传统的onclick方法不同，你甚至可以为ng-click方法传递一个对象，就像这样：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">&lt;ul&gt;</div><div class="line">    &lt;li ng-repeat=&quot;person in persons&quot;&gt;</div><div class="line">        &lt;button ng-click=&quot;printf(person)&quot;/&gt;</div><div class="line">    &lt;/li&gt;</div><div class="line">&lt;/ul&gt;</div></pre></td></tr></table></figure>
+</li>
+<li><p>当然还有ng-dblclick标签</p>
+<h4 id="第四-分支语句之ng-switch-on、ng-if-ng-show-ng-hide-ng-disabled标签"><a href="#第四-分支语句之ng-switch-on、ng-if-ng-show-ng-hide-ng-disabled标签" class="headerlink" title="第四 分支语句之ng-switch on、ng-if/ng-show/ng-hide/ng-disabled标签"></a>第四 分支语句之ng-switch on、ng-if/ng-show/ng-hide/ng-disabled标签</h4></li>
+<li>分支语句让你在界面上都可以写逻辑判断。<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line">&lt;ul&gt;</div><div class="line">    &lt;li ng-repeat=&quot;person in persons&quot;&gt;</div><div class="line">        &lt;span ng-switch on=&quot;person.sex&quot;&gt;</div><div class="line">            &lt;span ng-switch-when=&quot;1&quot;&gt;you are a boy&lt;/span&gt;</div><div class="line">            &lt;span ng-switch-when=&quot;2&quot;&gt;you are a girl&lt;/span&gt;</div><div class="line">        &lt;/span&gt;</div><div class="line">        &lt;span ng-if=&quot;person.sex==1&quot;&gt;you may be a father&lt;/span&gt;</div><div class="line">        &lt;span ng-show=&quot;person.sex==2&quot;&gt;you may be a mother&lt;/span&gt;</div><div class="line">        &lt;span&gt;</div><div class="line">        please input your baby&apos;s name:&lt;input type=&quot;text&quot; ng-disabled=&quot;!person.hasBaby&quot;/&gt;</div><div class="line">        &lt;/span&gt;</div><div class="line">    &lt;/li&gt;</div><div class="line">&lt;/ul&gt;</div></pre></td></tr></table></figure>
+</li>
+</ul>
+<h4 id="第五-校验语法之ng-trim-ng-minlength-ng-maxlength-required-ng-pattern-等标签"><a href="#第五-校验语法之ng-trim-ng-minlength-ng-maxlength-required-ng-pattern-等标签" class="headerlink" title="第五 校验语法之ng-trim ng-minlength ng-maxlength required ng-pattern 等标签"></a>第五 校验语法之ng-trim ng-minlength ng-maxlength required ng-pattern 等标签</h4><ul>
+<li>表单中的输入框，你可以使用上面的标签来实现对用户输入的校验。</li>
+<li><p>从字面意思上你已经知道了它们的意思。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">&lt;form name=&quot;yourForm&quot;&gt;</div><div class="line">    &lt;input type=&quot;text&quot; name=&quot;inputText&quot; required ng-trim=&quot;true&quot; ng-model=&quot;userNum&quot; ng-pattern=&quot;/^[0-9]*[1-9][0-9]*$/&quot; ng-maxlength=&quot;6&quot; maxlength=&quot;6&quot;/&gt;</div><div class="line">&lt;/form&gt;</div></pre></td></tr></table></figure>
+</li>
+<li><p>你可以通过 scope.yourForm.inputText.scope.yourForm.inputText.invalid 来判断输入的内容是否满足ng-pattern，ng-maxlength，maxlength</p>
+</li>
+<li>你通过$scope.userNum获得的输入内容是去掉前后空白的，因为ng-trim的存在。<h4 id="第六-下拉框之ng-options标签"><a href="#第六-下拉框之ng-options标签" class="headerlink" title="第六 下拉框之ng-options标签"></a>第六 下拉框之ng-options标签</h4></li>
+<li><p>ng-options是为下拉框专门打造的标签。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&lt;select ng-model=&quot;yourSelected&quot; ng-options=&quot;person.id as person.name in persons&quot;&gt;&lt;/select&gt;</div></pre></td></tr></table></figure>
+</li>
+<li><p>下拉框中显示的是person.name，当你选中其中一个的时候，你可以通过yourSelected得到你选中的person.id.</p>
+<h4 id="第七-控制css之ng-style标签"><a href="#第七-控制css之ng-style标签" class="headerlink" title="第七 控制css之ng-style标签"></a>第七 控制css之ng-style标签</h4></li>
+<li><p>ng-style帮你轻松控制你的css属性</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&lt;span ng-style=&quot;myColor&quot;&gt;your color&lt;/span&gt;</div></pre></td></tr></table></figure>
+</li>
+<li><p>你可以通过给myColor赋值的形式来改变你想要的效果，就像这样：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">$scope.myColor= &#123; color:&apos;blue&apos; &#125; ;</div><div class="line">$scope.myColor=&#123;cursor: &apos;pointer&apos;,color:&apos;blue&apos;&#125;;</div></pre></td></tr></table></figure>
+</li>
+</ul>
+<h4 id="第八-异步请求之-http对象。"><a href="#第八-异步请求之-http对象。" class="headerlink" title="第八 异步请求之$http对象。"></a>第八 异步请求之$http对象。</h4><ul>
+<li>AngularJS 提供了一个类似jquery的$.ajax的对象，用于异步请求。</li>
+<li><p>在AngularJS中对异步操作是推崇至极的，所以$http的操作都是异步的不像jquery.ajax里还提供了async参数。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">$http(&#123;method : &apos;POST&apos;,params : &#123; id:123&#125;, data:&#123;name:&apos;john&apos;,age:27&#125;, url : &quot;/mypath&quot;&#125;)</div><div class="line">.success(function(response, status, headers, config)&#123;</div><div class="line">//do anything what you want;</div><div class="line">&#125;)</div><div class="line">.error(function(response, status, headers, config)&#123;</div><div class="line">//do  anything what you want;</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
+</li>
+<li><p>如果你是POST请求，params里的数据会帮你拼到url后面，data里的数据会放到请求体中。</p>
+</li>
+</ul>
+
+        </div>
+      </div>
+    </div>
+  </div>
+</article>
+
+
+
+    <!-- Footer -->
+<footer>
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+        <p class="copyright text-muted">
+          Theme By <a target="_blank" href="https://github.com/levblanc">Levblanc.</a>
+          Inspired By <a target="_blank" href="https://github.com/klugjo/hexo-theme-clean-blog">Clean Blog.</a>
+        <p class="copyright text-muted">
+          Powered By <a target="_blank" href="https://hexo.io/">Hexo.</a>
+        </p>
+      </div>
+    </div>
+  </div>
+</footer>
+
+
+    <!-- After Footer Scripts -->
+<script src="/js/highlight.pack.js"></script>
+<script>
+  document.addEventListener("DOMContentLoaded", function(event) {
+    var codeBlocks = Array.prototype.slice.call(document.getElementsByTagName('pre'))
+    codeBlocks.forEach(function(block, index) {
+      hljs.highlightBlock(block);
+    });
+  });
+</script>
+
+  </body>
+</html>
+

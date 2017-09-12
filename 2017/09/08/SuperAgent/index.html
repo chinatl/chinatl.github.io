@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html>
+  <!-- Html Head Tag-->
+  <head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="技术">
+  <meta name="author" content="Allan">
+  <!-- Open Graph Data -->
+  <meta property="og:title" content="SuperAgent中文使用文档"/>
+  <meta property="og:description" content="技术" />
+  <meta property="og:site_name" content="Allan"/>
+  <meta property="og:type" content="article" />
+  <meta property="og:image" content="https://chinatl.github.io"/>
+  
+    <link rel="alternate" href="/atom.xml" title="Allan" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.ico">
+  
+
+  <!-- Site Title -->
+  <title>Allan</title>
+
+  <!-- Bootstrap CSS -->
+  <link rel="stylesheet" href="/css/bootstrap.min.css">
+  <!-- Custom CSS -->
+  
+  <link rel="stylesheet" href="/css/style.dark.css">
+
+  <!-- Google Analytics -->
+  
+
+</head>
+
+  <body>
+    <!-- Page Header -->
+
+
+<header class="site-header header-background" style="background-image: url(/img/default-banner-dark.jpg)">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+        <div class="page-title with-background-image">
+          <p class="title">SuperAgent中文使用文档</p>
+          <p class="subtitle"></p>
+        </div>
+        <div class="site-menu with-background-image">
+          <ul>
+            
+              <li>
+                <a href="/">
+                  
+                  Home
+                  
+                </a>
+              </li>
+            
+              <li>
+                <a href="/archives">
+                  
+                  Archives
+                  
+                </a>
+              </li>
+            
+              <li>
+                <a href="https://github.chinatl.com">
+                  
+                  Github
+                  
+                </a>
+              </li>
+            
+              <li>
+                <a href="mailto:codekidlan@gmail.com">
+                  
+                  Email
+                  
+                </a>
+              </li>
+            
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</header>
+
+
+<article>
+  <div class="container typo">
+    <div class="row">
+      <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+        <div class="post-info text-muted">
+          
+            <!-- Author -->
+            <span class="author info">By Allan</span>
+          
+          <!-- Date -->
+          <span class="date-time info">On
+            <span class="date">2017-09-08</span>
+            <span class="time">09:50:55</span>
+          </span>
+          
+          <!--  Categories  -->
+            <span class="categories info">Under 
+
+<a href="/categories/技术/">技术</a>
+</span>
+          
+        </div>
+        <!-- Tags -->
+        
+          <div class="post-tags text-muted">
+            Tags: 
+
+<a class="tag" href="/tags/ajax/">#ajax</a> <a class="tag" href="/tags/vue/">#vue</a>
+
+
+          </div>
+        
+        <!-- Post Main Content -->
+        <div class="post-content">
+          <h4 id="superagent-是一个轻量的-渐进式的ajax-api"><a href="#superagent-是一个轻量的-渐进式的ajax-api" class="headerlink" title="superagent 是一个轻量的,渐进式的ajax api"></a>superagent 是一个轻量的,渐进式的ajax api</h4><a id="more"></a>
+<ul>
+<li>一个简单的post请求，并设置请求头信息的例子<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">request</div><div class="line">.post(&apos;/api/pet&apos;)</div><div class="line">.send(&#123; name: &apos;Manny&apos;, species: &apos;cat&apos; &#125;)</div><div class="line">.set(&apos;X-API-Key&apos;, &apos;foobar&apos;)</div><div class="line">.set(&apos;Accept&apos;, &apos;application/json&apos;)</div><div class="line">.end(function(res)&#123;</div><div class="line">	if (res.ok) &#123;</div><div class="line">		alert(&apos;yay got &apos; + JSON.stringify(res.body));</div><div class="line">	&#125; else &#123;</div><div class="line">		alert(&apos;Oh no! error &apos; + res.text);</div><div class="line">	&#125;</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
+</li>
+</ul>
+<h3 id="请求基础"><a href="#请求基础" class="headerlink" title="请求基础"></a>请求基础</h3><ul>
+<li><p>一个请求的初始化可以用请求对象里合适的方法来执行，然后调用end()来发送请求,下面是一个简单的get请求</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">request</div><div class="line">.get(&apos;/search&apos;)</div><div class="line">.end(function(res)&#123;</div><div class="line">//</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
+</li>
+<li><p>请求方法也可以通过参数传递:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">request(&apos;GET&apos;, &apos;/search&apos;).end(callback);</div></pre></td></tr></table></figure>
+</li>
+<li><p>node客户端也允许提供绝对路径:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">request</div><div class="line">.get(&apos;http://example.com/search&apos;)</div><div class="line">.end(function(res)&#123;</div><div class="line">//</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
+</li>
+<li><p>delete,head,post,put和别的http动作都可以使用,来换个方法看看:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">request</div><div class="line">.head(&apos;/favicon.ico&apos;)</div><div class="line">.end(function(res)&#123;</div><div class="line">//</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
+</li>
+<li><p>delete是一个特列,因为它是系统保留的关键字,所以应该用.del()这个名字:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">request</div><div class="line">.del(&apos;/user/1&apos;)</div><div class="line">.end(function(res)&#123;</div><div class="line">//</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
+</li>
+<li><p>http请求默认的方法为get,所以就像你看到的,下面的这个例子也是可用的:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">request(&apos;/search&apos;, function(res)&#123;</div><div class="line">//</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
+</li>
+</ul>
+<h3 id="设置头字段"><a href="#设置头字段" class="headerlink" title="设置头字段"></a>设置头字段</h3><ul>
+<li><p>设置头字段非常简单，只需调用.set()方法，传递一个名称和值就行:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">request</div><div class="line">.get(&apos;/search&apos;)</div><div class="line">.set(&apos;API-Key&apos;, &apos;foobar&apos;)</div><div class="line">.set(&apos;Accept&apos;, &apos;application/json&apos;)</div><div class="line">.end(callback);</div></pre></td></tr></table></figure>
+</li>
+<li><p>你也可以直接传递一个对象进去，这样一次就可以修改多个头字段:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">request</div><div class="line">.get(&apos;/search&apos;)</div><div class="line">.set(&#123; &apos;API-Key&apos;: &apos;foobar&apos;, Accept: &apos;application/json&apos; &#125;)</div><div class="line">.end(callback);</div></pre></td></tr></table></figure>
+</li>
+</ul>
+<h4 id="Get请求"><a href="#Get请求" class="headerlink" title="Get请求"></a>Get请求</h4><ul>
+<li><p>当使用get请求传递查询字符串的时候，用.query()方法,传递一个对象就可以,下面的代码将产生一个/search?query=Manny&amp;range=1..5&amp;order=desc请求:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">request</div><div class="line">.get(&apos;/search&apos;)</div><div class="line">.query(&#123; query: &apos;Manny&apos; &#125;)</div><div class="line">.query(&#123; range: &apos;1..5&apos; &#125;)</div><div class="line">.query(&#123; order: &apos;desc&apos; &#125;)</div><div class="line">.end(function(res)&#123;</div><div class="line">//</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
+</li>
+<li><p>或者传一个单独的大对象:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">request</div><div class="line">.get(&apos;/search&apos;)</div><div class="line">.query(&#123; query: &apos;Manny&apos;, range: &apos;1..5&apos;, order: &apos;desc&apos; &#125;)</div><div class="line">.end(function(res)&#123;</div><div class="line">//</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
+</li>
+<li><p>.query()方法也允许传递字符串:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">request</div><div class="line">.get(&apos;/querystring&apos;)</div><div class="line">.query(&apos;search=Manny&amp;range=1..5&apos;)</div><div class="line">.end(function(res)&#123;</div><div class="line">//</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
+</li>
+<li><p>或者字符串拼接:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">request</div><div class="line">.get(&apos;/querystring&apos;)</div><div class="line">.query(&apos;search=Manny&apos;)</div><div class="line">.query(&apos;range=1..5&apos;)</div><div class="line">.end(function(res)&#123;</div><div class="line">//</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
+</li>
+</ul>
+<h4 id="POST-PUT请求"><a href="#POST-PUT请求" class="headerlink" title="POST/PUT请求"></a>POST/PUT请求</h4><ul>
+<li><p>一个典型的json post请求看起来就像下面的那样，设置一个合适的Content-type头字段，然后写入一些数据，在这个例子里只是json字符串:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">request.post(&apos;/user&apos;)</div><div class="line">.set(&apos;Content-Type&apos;, &apos;application/json&apos;)</div><div class="line">.send(&apos;&#123;&quot;name&quot;:&quot;tj&quot;,&quot;pet&quot;:&quot;tobi&quot;&#125;&apos;)</div><div class="line">.end(callback)</div></pre></td></tr></table></figure>
+</li>
+<li><p>因为json非常通用，所以就作为默认的Content-type,下面的例子跟上面的一样</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">request.post(&apos;/user&apos;)</div><div class="line">.send(&#123; name: &apos;tj&apos;, pet: &apos;tobi&apos; &#125;)</div><div class="line">.end(callback)</div></pre></td></tr></table></figure>
+</li>
+<li><p>或者调用多次.send()方法:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">request.post(&apos;/user&apos;)</div><div class="line">.send(&#123; name: &apos;tj&apos; &#125;)</div><div class="line">.send(&#123; pet: &apos;tobi&apos; &#125;)</div><div class="line">.end(callback)</div></pre></td></tr></table></figure>
+</li>
+<li><p>默认发送字符串，将设置Content-type为application/x-www-form-urlencoded,多次调用将会通过&amp;来连接，这里的结果为name=tj&amp;pet=tobi:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">request.post(&apos;/user&apos;)</div><div class="line">.send(&apos;name=tj&apos;)</div><div class="line">.send(&apos;pet=tobi&apos;)</div><div class="line">.end(callback);</div></pre></td></tr></table></figure>
+</li>
+</ul>
+<h4 id="设置Content-Type"><a href="#设置Content-Type" class="headerlink" title="设置Content-Type"></a>设置Content-Type</h4><ul>
+<li><p>常见的方案是使用.set()方法:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">request.post(&apos;/user&apos;)</div><div class="line">.set(&apos;Content-Type&apos;, &apos;application/json&apos;)</div></pre></td></tr></table></figure>
+</li>
+<li><p>一个简便的方法是调用.type()方法，传递一个规范的MIME名称，包括type/subtype,或者一个简单的后缀就像xml,json,png这样，例如:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">request.post(&apos;/user&apos;)</div><div class="line">.type(&apos;application/json&apos;)</div><div class="line">//</div><div class="line">request.post(&apos;/user&apos;)</div><div class="line">.type(&apos;json&apos;)</div><div class="line">//</div><div class="line">request.post(&apos;/user&apos;)</div><div class="line">.type(&apos;png&apos;)</div></pre></td></tr></table></figure>
+</li>
+</ul>
+<h4 id="设置接受类型"><a href="#设置接受类型" class="headerlink" title="设置接受类型"></a>设置接受类型</h4><ul>
+<li>跟.type()简便方法一样，这里也可以调用.accept()方法来设置接受类型，这个值将会被request.types所引用，支持传递一个规范的MIME名称，包括type/subtype,或者一个简单的后缀就像xml,json,png这样,例如:<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">request.get(&apos;/user&apos;)</div><div class="line">.accept(&apos;application/json&apos;)</div><div class="line">//</div><div class="line">request.get(&apos;/user&apos;)</div><div class="line">.accept(&apos;json&apos;)</div><div class="line">//</div><div class="line">request.get(&apos;/user&apos;)</div><div class="line">.accept(&apos;png&apos;)</div></pre></td></tr></table></figure>
+</li>
+</ul>
+<h4 id="查询字符串"><a href="#查询字符串" class="headerlink" title="查询字符串"></a>查询字符串</h4><ul>
+<li>当用.send(obj)方法来发送一个post请求，并且希望传递一些查询字符串，可以调用.query()方法,比如向?format=json&amp;dest=/login发送post请求:<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">request</div><div class="line">.post(&apos;/&apos;)</div><div class="line">.query(&#123; format: &apos;json&apos; &#125;)</div><div class="line">.query(&#123; dest: &apos;/login&apos; &#125;)</div><div class="line">.send(&#123; post: &apos;data&apos;, here: &apos;wahoo&apos; &#125;)</div><div class="line">.end(callback);</div></pre></td></tr></table></figure>
+</li>
+</ul>
+<h4 id="解析响应内容"><a href="#解析响应内容" class="headerlink" title="解析响应内容"></a>解析响应内容</h4><ul>
+<li>superagent会解析一些常用的格式给请求者，当前支持application/x-www-form-urlencoded,application/json,multipart/form-data.</li>
+</ul>
+<h4 id="中止请求"><a href="#中止请求" class="headerlink" title="中止请求"></a>中止请求</h4><ul>
+<li>可以通过req.abort()来中止请求.</li>
+</ul>
+<h4 id="基础验证"><a href="#基础验证" class="headerlink" title="基础验证"></a>基础验证</h4><ul>
+<li><p>nodejs客户端可以通过两种方式来达到验证的目的,第一个是传递一个像这样的url,user:pass:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">request.get(&apos;http://tobi:learnboost[@local](/user/local)&apos;).end(callback);</div></pre></td></tr></table></figure>
+</li>
+<li><p>第二种是调用.auth()方法:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">request</div><div class="line">.get(&apos;/some.png&apos;)</div><div class="line">.redirects(2)</div><div class="line">.end(callback);</div></pre></td></tr></table></figure>
+</li>
+</ul>
+<h3 id="superagent是一个非常实用的http代理模块-推荐大家使用"><a href="#superagent是一个非常实用的http代理模块-推荐大家使用" class="headerlink" title="superagent是一个非常实用的http代理模块,推荐大家使用."></a>superagent是一个非常实用的http代理模块,推荐大家使用.</h3>
+        </div>
+      </div>
+    </div>
+  </div>
+</article>
+
+
+
+    <!-- Footer -->
+<footer>
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+        <p class="copyright text-muted">
+          Theme By <a target="_blank" href="https://github.com/levblanc">Levblanc.</a>
+          Inspired By <a target="_blank" href="https://github.com/klugjo/hexo-theme-clean-blog">Clean Blog.</a>
+        <p class="copyright text-muted">
+          Powered By <a target="_blank" href="https://hexo.io/">Hexo.</a>
+        </p>
+      </div>
+    </div>
+  </div>
+</footer>
+
+
+    <!-- After Footer Scripts -->
+<script src="/js/highlight.pack.js"></script>
+<script>
+  document.addEventListener("DOMContentLoaded", function(event) {
+    var codeBlocks = Array.prototype.slice.call(document.getElementsByTagName('pre'))
+    codeBlocks.forEach(function(block, index) {
+      hljs.highlightBlock(block);
+    });
+  });
+</script>
+
+  </body>
+</html>
+
