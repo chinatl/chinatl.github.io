@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html>
+  <!-- Html Head Tag-->
+  <head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="技术">
+  <meta name="author" content="Allan">
+  <!-- Open Graph Data -->
+  <meta property="og:title" content="augular4 架构详解"/>
+  <meta property="og:description" content="技术" />
+  <meta property="og:site_name" content="Allan"/>
+  <meta property="og:type" content="article" />
+  <meta property="og:image" content="https://chinatl.github.io"/>
+  
+    <link rel="alternate" href="/atom.xml" title="Allan" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.ico">
+  
+
+  <!-- Site Title -->
+  <title>Allan</title>
+
+  <!-- Bootstrap CSS -->
+  <link rel="stylesheet" href="/css/bootstrap.min.css">
+  <!-- Custom CSS -->
+  
+  <link rel="stylesheet" href="/css/style.dark.css">
+
+  <!-- Google Analytics -->
+  
+
+</head>
+
+  <body>
+    <!-- Page Header -->
+
+
+<header class="site-header header-background" style="background-image: url(/img/default-banner-dark.jpg)">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+        <div class="page-title with-background-image">
+          <p class="title">augular4 架构详解</p>
+          <p class="subtitle"></p>
+        </div>
+        <div class="site-menu with-background-image">
+          <ul>
+            
+              <li>
+                <a href="/">
+                  
+                  Home
+                  
+                </a>
+              </li>
+            
+              <li>
+                <a href="/archives">
+                  
+                  Archives
+                  
+                </a>
+              </li>
+            
+              <li>
+                <a href="https://github.chinatl.com">
+                  
+                  Github
+                  
+                </a>
+              </li>
+            
+              <li>
+                <a href="mailto:codekidlan@gmail.com">
+                  
+                  Email
+                  
+                </a>
+              </li>
+            
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</header>
+
+
+<article>
+  <div class="container typo">
+    <div class="row">
+      <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+        <div class="post-info text-muted">
+          
+            <!-- Author -->
+            <span class="author info">By Allan</span>
+          
+          <!-- Date -->
+          <span class="date-time info">On
+            <span class="date">2017-09-13</span>
+            <span class="time">09:04:33</span>
+          </span>
+          
+          <!--  Categories  -->
+            <span class="categories info">Under 
+
+<a href="/categories/技术/">技术</a>
+</span>
+          
+        </div>
+        <!-- Tags -->
+        
+          <div class="post-tags text-muted">
+            Tags: 
+
+<a class="tag" href="/tags/angular/">#angular</a>
+
+
+          </div>
+        
+        <!-- Post Main Content -->
+        <div class="post-content">
+          <h4 id="在这里把我的所理解的知识分享给大家，部分内容引用自官方文档。"><a href="#在这里把我的所理解的知识分享给大家，部分内容引用自官方文档。" class="headerlink" title="在这里把我的所理解的知识分享给大家，部分内容引用自官方文档。"></a>在这里把我的所理解的知识分享给大家，部分内容引用自官方文档。</h4><a id="more"></a>
+<h4 id="Angular架构概览"><a href="#Angular架构概览" class="headerlink" title="Angular架构概览"></a>Angular架构概览</h4><ul>
+<li>先看一下架构图<br><img src="/2017/09/13/angular4/angular4.png" alt=""></li>
+<li>这个架构图展现了 Angular 应用中的 8 个主要构造块：<ul>
+<li>模块 (module)</li>
+<li>组件 (component)</li>
+<li>模板 (template)</li>
+<li>元数据 (metadata)</li>
+<li>数据绑定 (data binding)</li>
+<li>指令 (directive)</li>
+<li>服务 (service)</li>
+<li>依赖注入 (dependency injection)</li>
+</ul>
+</li>
+<li>接下来我按顺序并结合图来讲解一下。</li>
+</ul>
+<h4 id="1-模块-module"><a href="#1-模块-module" class="headerlink" title="1. 模块 (module)"></a>1. 模块 (module)</h4><ul>
+<li>Angular 或者 ionic 新建的项目，都会存在一个根模块，默认名是 AppModule。如果你使用了模块化来创建应用，包括 AppModule，每个都会存在一个 @NgModule 装饰器的类(虽然他很像 java 中的注解，但是他的官方命名叫装饰器)。我们新建的页面，如果不使用懒加载，都要在 @NgModule 中先声明后使用。</li>
+<li><p>简单介绍一下 @NgModule 中的内容</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">import &#123; NgModule &#125;      from &apos;@angular/core&apos;;</div><div class="line">import &#123; BrowserModule &#125; from &apos;@angular/platform-browser&apos;;</div><div class="line">@NgModule(&#123;</div><div class="line">  imports:      [ BrowserModule ],</div><div class="line">  providers:    [ Logger ],</div><div class="line">  declarations: [ AppComponent ],</div><div class="line">  exports:      [ AppComponent ],</div><div class="line">  bootstrap:    [ AppComponent ]</div><div class="line">&#125;)</div><div class="line">export class AppModule &#123; &#125;</div></pre></td></tr></table></figure>
+</li>
+<li><p>imports 本模块声明的组件模板需要的类所在的其它模块。</p>
+</li>
+<li>providers 服务的创建者，并加入到全局服务列表中，可用于应用任何部分。</li>
+<li>declarations 声明本模块中拥有的视图类。Angular 有三种视图类：组件、指令和管道。</li>
+<li>exports declarations 的子集，可用于其它模块的组件模板。</li>
+<li>bootstrap 指定应用的主视图（称为根组件），它是所有其它视图的宿主。只有根模块才能设置 bootstrap 属性。</li>
+</ul>
+<p>在图中的意义：看图左上角，模块是用来接收一个用来描述模块属性元数据对象的。</p>
+<h4 id="2-组件-component-、模板-template-、元数据-metadata"><a href="#2-组件-component-、模板-template-、元数据-metadata" class="headerlink" title="2. 组件 (component)、模板 (template)、元数据 (metadata)"></a>2. 组件 (component)、模板 (template)、元数据 (metadata)</h4><ul>
+<li><p>先看一下这段代码</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">@Component(&#123;</div><div class="line">selector:    &apos;hero-list&apos;,</div><div class="line">templateUrl: &apos;./hero-list.component.html&apos;,</div><div class="line">providers:  [ HeroService ]</div><div class="line">&#125;)</div><div class="line">export class HeroListComponent implements OnInit &#123;</div><div class="line">/**/</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+</li>
+<li><p>Component 组件是一个装饰器，他能接受一个配置对象， Angular 会基于这些信息创建和展示组件及其视图</p>
+<ul>
+<li>selector：CSS 选择器，它告诉 Angular 在父级 HTML 中查找 &lt; hero-list &gt; 标签，创建并插入该组件。</li>
+<li>templateUrl：组件 HTML 模板的模块相对地址，如果使用 template 来写的话是用“`”这个符号来直接编写 HTML 代码。</li>
+<li>providers：组件所需服务的依赖注入。</li>
+</ul>
+</li>
+<li>template 模板就是那段 HTML 代码，可以用 templateUrl 引入外面的，也可以用 template`` 直接写。</li>
+<li>metadata  元数据装饰器用类似的方式来指导 Angular 的行为。 例如 @Input、@Output、@Injectable 等是一些最常用的装饰器，用法就不在这里展开了。</li>
+</ul>
+<p><span style="font-weight: 900">在图中的意义：看图中间那一块，模板、元数据和组件共同描绘出这个视图。</span></p>
+<h4 id="3-数据绑定-data-binding"><a href="#3-数据绑定-data-binding" class="headerlink" title="3. 数据绑定 (data binding)"></a>3. 数据绑定 (data binding)</h4><ul>
+<li>这里一共展示四种数据绑定，看一下示例代码：</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">//插值表达式    显示组件的hero.name属性的值</div><div class="line">&lt;li&gt;&#123;&#123;hero.name&#125;&#125;&lt;/li&gt;</div><div class="line">//属性绑定    把父组件selectedHero的值传到子组件的hero属性中</div><div class="line">&lt;hero-detail [hero]=&quot;selectedHero&quot;&gt;&lt;/hero-detail&gt;</div><div class="line">//事件绑定    用户点击英雄的名字时调用组件的selectHero方法</div><div class="line">&lt;li (click)=&quot;selectHero(hero)&quot;&gt;&lt;/li&gt;</div><div class="line">//双向绑定    数据属性值通过属性绑定从组件流到输入框。用户的修改通过事件绑定流回组件，把属性值设置为最新的值</div><div class="line">&lt;input [(ngModel)]=&quot;hero.name&quot;&gt;</div></pre></td></tr></table></figure>
+<ul>
+<li>总结一下：<ul>
+<li>双花括号是单向绑定，传递的是值。方向是 组件 -&gt; 模板。</li>
+<li>方括号是单向绑定，传递的是属性。方向是 父组件 -&gt; 子组件。</li>
+<li>圆括号是事件绑定，处理点击等活动（action）。</li>
+<li>方括号套圆括号是双向绑定，方向是 组件 &lt;-&gt; 模板。</li>
+</ul>
+</li>
+</ul>
+<p><span style="font-weight: 900">在图中的意义：看图中间那一块，数据绑定给模板和组件提供数据交互的方式。</span></p>
+<h4 id="4-指令-directive"><a href="#4-指令-directive" class="headerlink" title="4. 指令 (directive)"></a>4. 指令 (directive)</h4><ul>
+<li>严格来说组件就是一个指令，但是组件非常独特，并在 Angular 中位于中心地位，所以在架构概览中，我们把组件从指令中独立了出来。</li>
+<li>这里提到的指令有两种类型：结构型 structural 指令和属性 attribute 型指令。<ul>
+<li>结构型指令是 ngFor、ngIf 这种的，通过在 DOM 中添加、移除和替换元素来修改布局。</li>
+<li>属性型指令是 ngModel 这种的，用来修改一个现有元素的外观或行为。</li>
+</ul>
+</li>
+<li>Angular 还有少量指令，它们或者修改结构布局（例如 ngSwitch ）， 或者修改 DOM 元素和组件的各个方面（例如 ngStyle 和 ngClass）。</li>
+</ul>
+<p><span style="font-weight: 900">在图中的意义：看图右上角那一块，组件是一个带模板的指令，只是扩展了一些面向模板的特性。</span></p>
+<h4 id="5-服务-service"><a href="#5-服务-service" class="headerlink" title="5. 服务 (service)"></a>5. 服务 (service)</h4><ul>
+<li>官方文档的概念：<ul>
+<li>服务是一个广义范畴，包括：值、函数，或应用所需的特性。服务没有什么特别属于 Angular 的特性。Angular 对于服务也没有什么定义，它甚至都没有定义服务的基类，也没有地方注册一个服务。</li>
+</ul>
+</li>
+<li>这就像你在 node 或者 php 里单独建了一个类叫 httpService ，封装了网络请求服务一样，不是具体的什么东西，就是一个概念了解下就行。</li>
+</ul>
+<p><span style="font-weight: 900">在图中的意义：看图左下角角那一块，服务是用来封装可重用的业务逻辑。</span></p>
+<h4 id="6-依赖注入-dependency-injection"><a href="#6-依赖注入-dependency-injection" class="headerlink" title="6. 依赖注入 (dependency injection)"></a>6. 依赖注入 (dependency injection)</h4><ul>
+<li>依赖注入是提供类的新实例的一种方式，还负责处理类所需的全部依赖。大多数依赖都是服务。 Angular 使用依赖注入来提供新组件以及组件所需的服务。</li>
+<li><p>比如我们要给某组件导入 HomeService 这个服务，看这段代码：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">constructor(private service: HeroService) &#123; </div><div class="line">    ...</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+</li>
+<li><p>这个constructor就是构造函数，依赖注入在 constructor 中进行。你也许会觉得前面写上 private、public 之类的很怪，这是 TypeScript 语法比较特殊，习惯就好。</p>
+</li>
+<li>当 Angular 创建组件时，会首先为组件所需的服务请求一个注入器 injector。我们必须先用注入器 injector 为 HeroService 注册一个提供商 provider。</li>
+<li>看一下下面的代码，意思就是我们必须在 providers 写上才能用<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">@Component(&#123;</div><div class="line">  selector:    &apos;hero-list&apos;,</div><div class="line">  templateUrl: &apos;./hero-list.component.html&apos;,</div><div class="line">  providers:  [ HeroService ]</div><div class="line">&#125;)</div></pre></td></tr></table></figure>
+</li>
+</ul>
+<p><span style="font-weight: 900">在图中的意义：看图左下角角那一块，依赖注入主要用来导入服务。</span></p>
+<h5 id="推荐一些学习资源"><a href="#推荐一些学习资源" class="headerlink" title="推荐一些学习资源"></a>推荐一些学习资源</h5><ul>
+<li><a href="https://www.angular.cn/tutorial/toh-pt1" target="_blank" rel="external">Angular中文文档</a><ul>
+<li>官方文档，内容很全，需要一定的时间进行阅读。</li>
+</ul>
+</li>
+<li><a href="https://www.tslang.cn/docs/handbook/basic-types.html" target="_blank" rel="external">TypeScript中文文档 </a><ul>
+<li>官方文档，angular会用到很多TS语法。 至少要把 TS 的基本语法要去掌握了。</li>
+</ul>
+</li>
+<li><a href="http://www.imooc.com/learn/156" target="_blank" rel="external">Angular2.0视频教程 </a><ul>
+<li>大漠老师出的教程，经典，没基础的话看着比较困难，讲的太快了。</li>
+</ul>
+</li>
+<li><a href="http://www.ituring.com.cn/book/1874" target="_blank" rel="external">《Angular权威教程》 </a>    <ul>
+<li>书内容不错，由浅入深，从网上买的正版纸质书，习惯PDF的朋友可以搜索一下电子书资源。</li>
+</ul>
+</li>
+</ul>
+
+        </div>
+      </div>
+    </div>
+  </div>
+</article>
+
+
+
+    <!-- Footer -->
+<footer>
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+        <p class="copyright text-muted">
+          Theme By <a target="_blank" href="https://github.com/levblanc">Levblanc.</a>
+          Inspired By <a target="_blank" href="https://github.com/klugjo/hexo-theme-clean-blog">Clean Blog.</a>
+        <p class="copyright text-muted">
+          Powered By <a target="_blank" href="https://hexo.io/">Hexo.</a>
+        </p>
+      </div>
+    </div>
+  </div>
+</footer>
+
+
+    <!-- After Footer Scripts -->
+<script src="/js/highlight.pack.js"></script>
+<script>
+  document.addEventListener("DOMContentLoaded", function(event) {
+    var codeBlocks = Array.prototype.slice.call(document.getElementsByTagName('pre'))
+    codeBlocks.forEach(function(block, index) {
+      hljs.highlightBlock(block);
+    });
+  });
+</script>
+
+  </body>
+</html>
+
