@@ -18,12 +18,24 @@
     </div>  
     ------------------------------------
     <input type="file" accept="image/*" multiple>
-    ------------------------------------
-    <input type="file" accept="image/*" capture="camera">
-    ---------------------------
+    <br />------------------------------------
+  <input id="fileBtn" type="file" onchange="upload('#fileBtn', '#img');" accept="image/*" capture="camera"/>
+  <input id="fileBtn" type="file" onchange="upload('#fileBtn', '#img');" accept="image/*" capture="camera"/>
+    <br />---------------------------
     <button id="btn">相机</button>
   
-    <script type="text/javascript">  
+    <script type="text/javascript"> 
+    var upload = function(c, d){
+      "use strict";
+      var $c = document.querySelector(c),
+          $d = document.querySelector(d),
+          file = $c.files[0],
+          reader = new FileReader();
+      reader.readAsDataURL(file);
+      reader.onload = function(e){
+          $d.setAttribute("src", e.target.result);
+      };
+  }; 
     btn.click = function(){
       plus.camera.getCamera( 1 ); 
     }
