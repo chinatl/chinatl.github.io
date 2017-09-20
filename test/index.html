@@ -7,24 +7,25 @@
 </head>  
 <body>  
     ------------------------------------
-    <input type="file" accept="image/*" multiple>
+  <input type="file" accept="image/*" multiple>
     <br />------------------------------------
   <input id="fileBtn" type="file" onchange="upload('#fileBtn', '#img');" accept="image/*" capture="camera"/>
-  <img src="" alt="" id="#img">
+  <img src="" alt="" id="img">
     <br />---------------------------
-    <script type="text/javascript"> 
-    var upload = function(c, d){
-      "use strict";
-      var $c = document.querySelector(c),
-          $d = document.querySelector(d),
-          file = $c.files[0],
-          reader = new FileReader();
-      reader.readAsDataURL(file);
-      reader.onload = function(e){
-          $d.setAttribute("src", e.target.result);
-      };
-  } 
-    
-    </script>  
+<script type="text/javascript"> 
+var upload = function(c, d){
+  var $c = document.querySelector(c),
+      $d = document.querySelector(d),
+      file = $c.files[0],
+      reader = new FileReader();
+  reader.readAsDataURL(file);
+  console.log(1)
+  reader.onload = function(e){
+    console.log(e)
+      $d.setAttribute("src", e.target.result);
+  };
+} 
+
+</script>  
 </body>  
 </html>
