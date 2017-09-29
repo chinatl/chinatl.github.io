@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+	<title>网页端的二维码</title>
+	<script type="text/javascript" src="js/jquery.min.js"></script>
+	<script type="text/javascript" src="js/qrcode.min.js"></script>
+    <script src="./socket.io.js"></script>
+</head>
+<body>
+	<div id="qrcode" style="width:200px; height:200px; margin-top:15px;"></div>
+	<div id='txt'>请扫面二维码登录</div>
+	<script>
+	$(function(){
+		var qrcode = new QRCode(document.getElementById("qrcode"), {
+			width : 200,
+			height : 200
+		});
+    	var socket = io('ws://localhost:8010');
+		var randNumber  = rand();
+		console.log(randNumber)
+		var str =window.location.href+''+randNumber;
+		qrcode.makeCode(str);
+	    socket.emit('message', randNumber);
+	    localStorage.setItem('login',randNumber)
+   		socket.on('login'+randNumber,function(data){
+   			alert('收到服务端消息')
+   			$('#txt').html('已登录')
+    	});
+    	function rand (){
+			var arr = '1234567890abcdefghijklmnopqrestuvwxyz'.split('');
+			var newArr = [];
+			var len = arr.length;
+			for(var i = 0;i<15;i++){
+				var randNum = Math.floor(Math.random()*len);
+				newArr.push(arr[randNum]);
+			}
+			return newArr.join('')
+    	}
+	})
+	</script>
+</body>
+</html>
