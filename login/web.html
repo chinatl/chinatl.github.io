@@ -13,21 +13,25 @@
 	<div id='txt'>请扫面二维码登录</div>
 	<script>
 	$(function(){
+		var url = 'https://chinatl.github.io/login/phone.html'
 		var qrcode = new QRCode(document.getElementById("qrcode"), {
 			width : 200,
 			height : 200
 		});
-    	var socket = io('ws://localhost:8010');
-		var randNumber  = rand();
-		console.log(randNumber)
-		var str =window.location.href+''+randNumber;
-		qrcode.makeCode(str);
-	    socket.emit('message', randNumber);
-	    localStorage.setItem('login',randNumber)
-   		socket.on('login'+randNumber,function(data){
-   			alert('收到服务端消息')
-   			$('#txt').html('已登录')
-    	});
+		function ws(){
+			var socket = io('ws://localhost:8010');
+			var randNumber  = rand();
+			console.log(randNumber)
+			var str =url+'?uid='+randNumber;
+			qrcode.makeCode(str);
+		    socket.emit('message', randNumber);
+		    localStorage.setItem('login',randNumber)
+	   		socket.on('login'+randNumber,function(data){
+	   			alert('收到服务端消息')
+	   			$('#txt').html('已登录')
+	    	});
+		}
+    	// ws();
     	function rand (){
 			var arr = '1234567890abcdefghijklmnopqrestuvwxyz'.split('');
 			var newArr = [];

@@ -8,16 +8,18 @@
 </head>
 <body>
 	<div>是否确认登录</div>
-	<button>确定</button>
+	<button id="btn">确定</button>
 	<button>取消</button>
 	<script>
-	  var socket = io('http://localhost:8010');
-	  var btn = document.getElementById('btn');
-      btn.onclick = function(){
-      	var randNumber = localStorage.getItem('login');
-      	alert('ok')
-	    socket.emit('sendLogin',randNumber);
-	  }
+		var uid = window.location.search.split('?')[1].split('&')[0].split('=')[1]
+		console.log(uid)
+		// var socket = io('http://localhost:8010');
+		var btn = document.getElementById('btn');
+		btn.onclick = function(){
+			var randNumber = localStorage.getItem('login');
+			alert('ok')
+			// socket.emit('sendLogin',randNumber);
+		}
 	</script>
 </body>
 </html>
