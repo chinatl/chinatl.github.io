@@ -5,13 +5,13 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="技术">
+  <meta name="description" content="">
   <meta name="author" content="Allan">
   <!-- Open Graph Data -->
-  <meta property="og:title" content="人生苦短 我用python"/>
-  <meta property="og:description" content="技术" />
+  <meta property="og:title" content="Allan"/>
+  <meta property="og:description" content="chinatl.github.io" />
   <meta property="og:site_name" content="Allan"/>
-  <meta property="og:type" content="article" />
+  <meta property="og:type" content="website" />
   <meta property="og:image" content="https://chinatl.github.io"/>
   
     <link rel="alternate" href="/atom.xml" title="Allan" type="application/atom+xml">
@@ -43,7 +43,7 @@
     <div class="row">
       <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
         <div class="page-title with-background-image">
-          <p class="title">人生苦短 我用python</p>
+          <p class="title">Untitled Post</p>
           <p class="subtitle"></p>
         </div>
         <div class="site-menu with-background-image">
@@ -100,46 +100,53 @@
           
           <!-- Date -->
           <span class="date-time info">On
-            <span class="date">2017-09-11</span>
+            <span class="date">2018-04-04</span>
             <span class="time">17:19:59</span>
           </span>
-          
-          <!--  Categories  -->
-            <span class="categories info">Under 
-
-<a href="/categories/技术/">技术</a>
-</span>
           
         </div>
         <!-- Tags -->
         
-          <div class="post-tags text-muted">
-            Tags: 
-
-<a class="tag" href="/tags/Python/">#Python</a>
-
-
-          </div>
-        
         <!-- Post Main Content -->
         <div class="post-content">
-          <h3 id="人生苦短-我用python"><a href="#人生苦短-我用python" class="headerlink" title="人生苦短 我用python"></a>人生苦短 我用python</h3><a id="more"></a>
-<h4 id="第一个python程序"><a href="#第一个python程序" class="headerlink" title="第一个python程序"></a>第一个python程序</h4><ul>
-<li><p>要使用phtyon打印出制定程序，可以使用 print 语句,在 cmd 中输入 python</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">&gt;&gt;&gt; print &apos;hello world&apos;</div><div class="line">&gt;&gt;&gt; hello world</div></pre></td></tr></table></figure>
-</li>
-<li><p>最后使用exit()退出程序</p>
-</li>
-</ul>
-<h4 id="使用文本编辑器"><a href="#使用文本编辑器" class="headerlink" title="使用文本编辑器"></a>使用文本编辑器</h4><ul>
-<li><p>使用sublimee 保存一个 index.py ，代码如下</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">print &apos;hello world&apos;</div></pre></td></tr></table></figure>
-</li>
-<li><p>在cmd环境下运行（在当前位置使用 shift + 鼠标右键打开）</p>
-<p>  python index.py<br>  hello world </p>
-</li>
-<li><p>在sublime中可以直接使用 alt + b 运行</p>
-<h4 id="python-基础"><a href="#python-基础" class="headerlink" title="python 基础"></a>python 基础</h4></li>
+          <h3 id="native-app-htbrid-app-web-app-的区别"><a href="#native-app-htbrid-app-web-app-的区别" class="headerlink" title="native-app,htbrid-app,web-app 的区别"></a>native-app,htbrid-app,web-app 的区别</h3><h4 id="Web-app"><a href="#Web-app" class="headerlink" title="Web app"></a>Web app</h4><ul>
+<li>介绍 采用Html5语言写出的App，不需要下载安装，存在浏览器中的应用，基本上可以说是触屏版的网页应用    </li>
+<li>优点<pre><code>1. 支持设备广泛
+2. 较低的开发成本；
+3. 可即时上线；
+4. 无内容限制；
+5. 用户可以直接使用最新版本（自动更新，不需用户手动更新）
+</code></pre></li>
+<li>缺点<pre><code>1. 表现略差（对联网的要求比较大；
+2. 用户体验没那么炫；
+3. 图片和动画支持性不高；
+4. 没法在App Store中下载、无法通过应用下载获得盈利机会；
+5. 要求联网；
+6. 对手机特点有限制（摄像头、GPS等）
+</code></pre><h4 id="Native-app"><a href="#Native-app" class="headerlink" title="Native app"></a>Native app</h4></li>
+<li>介绍 是原生程序，一般依托于操作系统，有很强的交互，是一个完整的App，可拓展性强。需要用户下载安装使用。    </li>
+<li>优点<pre><code>1. 可访问手机所有功能（GPS、摄像头），
+2. 速度更快、性能高、整体用户体验不错
+3. 可线下使用（因为是在跟Web相对地平台上使用的）
+4. 支持大量图形和动画; 容易发现（在App Store里面）和重新发现（应用图标会一直在主页上）
+</code></pre></li>
+<li>缺点<pre><code>1. 开发成本高（不同平台有不同的开发语言和界面适配）
+2. 维护成本高（例如一款App已更新至V5版本，但仍有用户在使用V2， V3， V4版本，需要更多的开发人员维护之前的版本）
+3. 更新缓慢，根据不同平台，提交–审核–上线 等等不同的流程，需要经过的流程较复杂
+4. 上线时间不确定（App Store审核过程不一）
+5. 获得新版本时需重新下载应用更新
+6. 内容限制（App Store限制）
+</code></pre><h4 id="Hybrid-App"><a href="#Hybrid-App" class="headerlink" title="Hybrid App"></a>Hybrid App</h4></li>
+<li>指介于web-app、native-app这两者之间的app，兼具“Native App良好用户交互体验的优势”和“Web App跨平台开发的优势”。</li>
+<li>优点<pre><code>1. 具有跨平台特性
+2. 顺利访问手机的多种功能
+3. App Store中可下载（Wen应用套用原生应用的外壳）
+4. 可线下使用。
+</code></pre></li>
+<li>缺点 <pre><code>1. 不确定上线时间
+2. 性能稍慢（需要连接网络）
+3. 用户体验不如本地应用
+</code></pre></li>
 </ul>
 
         </div>
