@@ -170,7 +170,7 @@ $(function() {
 	var w = new Coder("md");
 	w.load("<h1 class='writecode'>简历</h1>");
 	w.load("<p><div class='writecode'>唐兰</div>");
-	w.load("<div class='writecode'>web前端工程师(西安索兆信息科技有限公司)</div>");
+	w.load("<div class='writecode'>web前端工程师(西安博通国际软件科技有限公司)</div>");
 	w.load("<div class='writecode'>前端/NodeJS 开发工程师</div></p>");
 	w.load("<h1 class='writecode'>联系我</h1>");
 	w.load("<ul>");
